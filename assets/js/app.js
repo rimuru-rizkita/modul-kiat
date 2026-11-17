@@ -38,6 +38,9 @@ ICONS.home='<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline 
 ICONS.peringatan='<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>';
 ICONS.asesmen='<rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>';
 ICONS.atas='<path d="m18 15-6-6-6 6"/>';
+ICONS.perbesar='<path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/>';
+ICONS.perkecil='<path d="M4 14h6v6"/><path d="M20 10h-6V4"/><path d="M14 10l7-7"/><path d="M3 21l7-7"/>';
+ICONS.pindah='<path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/>';
 ICONS.jeda='<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>';
 const svg=n=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICONS[n]||''}</svg>`;
 const paint=(r=document)=>r.querySelectorAll('i[data-ic]').forEach(i=>{ i.innerHTML=svg(i.dataset.ic); i.setAttribute('aria-hidden','true'); });
@@ -140,7 +143,6 @@ function selectFmt(f,focus){
   const pa=$('#panel-artikel'); pa.dataset.mode=f; pa.setAttribute('aria-labelledby',$(`.fmt[data-fmt="${f}"]`).id);
   $('#panel-isyarat').hidden=f!=='isyarat'; $('#panel-easy').hidden=f!=='easy';
   $('#player').hidden=f!=='dengar';
-  $('#signTab').hidden = f==='isyarat' || $('#view-bab').hidden;
   placeAlt();
   if(f!=='dengar') stopTTS();
   if(f!=='isyarat'){ clearInterval(sT); const sp=$('#sPlay'); if(sp&&sp.getAttribute('aria-pressed')==='true') sp.click(); }
@@ -158,14 +160,14 @@ function setPlay(on){ const b=$('#ttsPlay'); b.innerHTML=`<i class="ic" data-ic=
 function utter(t){ const u=new SpeechSynthesisUtterance(t); u.lang='id-ID'; if(voice) u.voice=voice; u.rate=rate; return u; }
 function speakAt(i){ const l=readables(); if(i<0) i=0; if(i>=l.length){ stopTTS(); $('#ttsStatus').textContent='Selesai. Tekan Lanjut untuk langkah berikutnya.'; return; }
   cur=i; clearReading(); const el=l[i]; el.classList.add('reading'); el.scrollIntoView({block:'center',behavior:calm()});
-  $('#ttsStatus').textContent=`Bagian ${i+1} dari ${l.length}`;
+  $('#ttsStatus').textContent=`Bagian ${i+1} dari ${l.length}`; jbiShow(el.innerText);
   if(!hasTTS) return; speechSynthesis.cancel(); const u=utter(el.innerText); u.onend=()=>{ if(playing&&cur===i) speakAt(i+1); }; speechSynthesis.speak(u); }
 function stopTTS(){ playing=false; if(hasTTS) speechSynthesis.cancel(); clearReading(); setPlay(false); }
 $('#ttsPlay').addEventListener('click',()=>{ if(playing){ playing=false; if(hasTTS) speechSynthesis.cancel(); setPlay(false); $('#ttsStatus').textContent='Dijeda.'; } else { playing=true; setPlay(true); speakAt(cur); } });
 $('#ttsNext').addEventListener('click',()=>{ playing=true; setPlay(true); speakAt(cur+1); });
 $('#ttsPrev').addEventListener('click',()=>{ playing=true; setPlay(true); speakAt(cur-1); });
 $$('.speed button').forEach(b=>b.addEventListener('click',()=>{ rate=+b.dataset.rate; $$('.speed button').forEach(x=>x.setAttribute('aria-pressed',x===b)); if(playing) speakAt(cur); }));
-function say(t,onend){ if(!hasTTS){ toast('Perangkat ini belum mendukung suara'); return; } speechSynthesis.cancel(); const u=utter(t); if(onend) u.onend=onend; speechSynthesis.speak(u); }
+function say(t,onend){ jbiShow(t); if(!hasTTS){ toast('Perangkat ini belum mendukung suara'); return; } speechSynthesis.cancel(); const u=utter(t); if(onend) u.onend=onend; speechSynthesis.speak(u); }
 $('#voiceTest').addEventListener('click',()=>say('Halo. Ini contoh suara modul Kewarganegaraan.'));
 
 /* ---- Video pemicu ---- */
@@ -233,7 +235,7 @@ function setAnim(stop){ animStopped=stop; $$('.jbi-img').forEach(im=>{ im.src=st
   $$('[data-anim]').forEach(b=>{ b.setAttribute('aria-pressed',stop); b.innerHTML=stop?'<i class="ic" data-ic="putar"></i>Jalankan animasi':'<i class="ic" data-ic="jeda"></i>Hentikan animasi'; paint(b); }); }
 $$('[data-anim]').forEach(b=>b.addEventListener('click',()=>setAnim(!animStopped)));
 /* ---- Preferensi ---- */
-const DEF={size:100,font:'atkinson',spacing:'normal',theme:'auto',ruler:false,sorot:true,motion:false,jbi:true,startfmt:'teks'};
+const DEF={size:100,font:'atkinson',spacing:'normal',theme:'auto',ruler:false,sorot:true,motion:false,jbi:true,startfmt:'teks',clickread:false,jbifloat:false};
 let pref=Object.assign({},DEF,store.get('kiat-pref',{})); const hostTheme=root.dataset.theme||'';
 const SP={normal:[1.6,'0em','0em'],lega:[1.9,'0.04em','0.12em'],sangat:[2.2,'0.08em','0.2em']};
 function applyPref(msg){
@@ -241,6 +243,7 @@ function applyPref(msg){
   if(pref.font==='atkinson') delete root.dataset.font; else root.dataset.font=pref.font;
   delete root.dataset.contrast;
   if(pref.theme==='light'||pref.theme==='dark') root.dataset.theme=pref.theme; else if(pref.theme==='high'){ root.dataset.contrast='high'; root.dataset.theme='dark'; } else { if(hostTheme) root.dataset.theme=hostTheme; else delete root.dataset.theme; }
+  root.dataset.clickread=pref.clickread?'on':'off'; $('#jbiFloat').hidden=!pref.jbifloat; $('#signTab').setAttribute('aria-pressed',!!pref.jbifloat);
   root.dataset.sorot=pref.sorot?'on':'off'; root.dataset.motion=pref.motion?'off':'on'; setAnim(!!pref.motion || matchMedia('(prefers-reduced-motion: reduce)').matches); $('#ruler').hidden=!pref.ruler;
   $('#vJbi').hidden=!pref.jbi; $('#vJbiBtn').setAttribute('aria-pressed',pref.jbi);
   $('#size').value=pref.size; $('#sizeVal').textContent=pref.size+'%'; $('#size').setAttribute('aria-valuetext',pref.size+' persen');
@@ -305,15 +308,51 @@ $('#openAcc').addEventListener('click',()=>popup({icon:'kampus',tone:'lensa',tit
   actions:[{label:'Kirim ke ULD',primary:true,icon:'centang',onClick:()=>{ const n=$$('#mBody input:checked').length; if(!n){ toast('Pilih minimal satu kebutuhan'); return false; }
     setTimeout(()=>popup({icon:'centang',tone:'ok',title:'Pengajuan terkirim',html:`<p>${n} kebutuhan dikirim ke Unit Layanan Disabilitas Itera. Petugas akan menghubungimu dalam 2 hari kerja.</p>`}),0); }},{label:'Batal'}]}));
 
-$('#signTab').addEventListener('click',()=>{ selectFmt('isyarat'); window.scrollTo({top:0,behavior:calm()}); $('#tab-isyarat').focus(); toast('Format Bahasa Isyarat aktif'); });
+$('#signTab').addEventListener('click',()=>{ pref.jbifloat=!pref.jbifloat; applyPref(pref.jbifloat?'Jendela BISINDO dibuka. Klik teks untuk diterjemahkan.':'Jendela BISINDO ditutup'); if(pref.jbifloat) $('#jfClose').focus(); });
+
+/* ---- Jendela juru bahasa isyarat melayang ---- */
+let jfT=null;
+function jbiShow(t){ if(!pref.jbifloat||!t) return; const txt=t.replace(/\s+/g,' ').trim(); $('#jfCap').textContent=txt;
+  const im=$('#jfImg'); if(animStopped){ im.src=im.dataset.png; return; }
+  im.src=im.dataset.gif; clearTimeout(jfT); jfT=setTimeout(()=>{ im.src=im.dataset.png; }, Math.max(3000, txt.split(' ').length*450)); }
+$('#jfClose').addEventListener('click',()=>{ pref.jbifloat=false; applyPref('Jendela BISINDO ditutup'); $('#signTab').focus(); });
+$('#jfSize').addEventListener('click',function(){ const big=$('#jbiFloat').classList.toggle('big'); this.setAttribute('aria-label',big?'Perkecil jendela':'Perbesar jendela'); this.innerHTML=`<i class="ic" data-ic="${big?'perkecil':'perbesar'}"></i>`; paint(this); });
+$('#jfSide').addEventListener('click',function(){ const left=$('#jbiFloat').classList.toggle('left'); this.setAttribute('aria-label',left?'Pindahkan jendela ke kanan':'Pindahkan jendela ke kiri'); $('#readBar').style.left=left?'auto':''; $('#readBar').style.right=left?'calc(max(16px, env(safe-area-inset-right,0px)) + 80px)':''; });
+
+/* ---- Bantu baca: klik teks & bacakan halaman ---- */
+const READ_SEL='main h1, main h2, main h3, main p, main li, main th, main td, main blockquote, main .chap, .modal h2, .modal-body p';
+const visibleEl=e=>e.offsetParent!==null && !e.closest('[hidden]');
+function markClick(el){ $$('.reading-click').forEach(x=>x.classList.remove('reading-click')); if(el) el.classList.add('reading-click'); }
+document.addEventListener('click',e=>{
+  if(!(pref.clickread||pref.jbifloat)) return;
+  if(e.target.closest('.drawer,.fab-stack,.jbi-float,.read-bar,.sign-tab,input,textarea,select,.formats,.stepper,.pager,.topbar')) return;
+  const el=e.target.closest(READ_SEL); if(!el) return;
+  const txt=el.innerText.trim(); if(!txt) return;
+  markClick(el);
+  if(pref.clickread){ if(!hasTTS){ jbiShow(txt); toast('Perangkat ini belum mendukung suara'); return; } speechSynthesis.cancel(); jbiShow(txt); const u=utter(txt); u.onend=()=>markClick(null); speechSynthesis.speak(u); }
+  else { jbiShow(txt); setTimeout(()=>markClick(null),2500); }
+},true);
+
+const pr={on:false,paused:false,list:[],i:0};
+function pageList(){ const all=$$(READ_SEL).filter(e=>visibleEl(e)&&e.innerText.trim()&&!e.closest('.drawer,.modal')); return all.filter(e=>!all.some(o=>o!==e&&o.contains(e))); }
+function prSpeak(){ if(!pr.on) return; if(pr.i>=pr.list.length){ prStop(); toast('Selesai dibacakan'); return; }
+  const el=pr.list[pr.i], txt=el.innerText.trim(); markClick(el); el.scrollIntoView({block:'center',behavior:calm()});
+  $('#readTxt').textContent=`Membacakan ${pr.i+1} dari ${pr.list.length}`; jbiShow(txt);
+  if(!hasTTS){ setTimeout(()=>{ if(pr.on&&!pr.paused){ pr.i++; prSpeak(); } },2500); return; }
+  speechSynthesis.cancel(); const u=utter(txt); u.onend=()=>{ if(pr.on&&!pr.paused){ pr.i++; prSpeak(); } }; speechSynthesis.speak(u); }
+function prStart(){ stopTTS(); pr.list=pageList(); pr.i=0; pr.on=true; pr.paused=false; $('#readBar').hidden=false; $('#readPause').textContent='Jeda'; prSpeak(); }
+function prStop(){ pr.on=false; pr.paused=false; if(hasTTS) speechSynthesis.cancel(); markClick(null); $('#readBar').hidden=true; }
+$('#readPageBtn').addEventListener('click',()=>{ closeDlg(); setTimeout(prStart,150); });
+$('#readStop').addEventListener('click',prStop);
+$('#readPause').addEventListener('click',function(){ if(!pr.paused){ pr.paused=true; if(hasTTS) speechSynthesis.cancel(); this.textContent='Lanjutkan'; $('#readTxt').textContent='Dijeda'; } else { pr.paused=false; this.textContent='Jeda'; prSpeak(); } });
+window.addEventListener('hashchange',()=>{ if(pr.on) prStop(); });
 $('#toTop').addEventListener('click',()=>{ window.scrollTo({top:0,behavior:calm()}); $('#materi').focus({preventScroll:true}); });
 window.addEventListener('scroll',()=>{ $('#toTop').hidden = window.scrollY < 500; },{passive:true});
 /* ---- Rute ---- */
 function route(){
   const h=location.hash; const m=/^#langkah-([1-5])$/.exec(h);
   const bab=!!m; $('#view-beranda').hidden=bab; $('#view-bab').hidden=!bab;
-  $('#signTab').hidden = !bab || !$('#panel-isyarat').hidden;
-  if(bab){ if(+m[1]!==step||!route.inBab){ goStep(+m[1],route.inBab); } route.inBab=true; $('#signTab').hidden=!$('#panel-isyarat').hidden; }
+  if(bab){ if(+m[1]!==step||!route.inBab){ goStep(+m[1],route.inBab); } route.inBab=true; }
   else { route.inBab=false; stopTTS(); renderDash(); }
   window.scrollTo({top:0});
 }

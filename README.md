@@ -8,7 +8,8 @@ Model pembelajaran **KIAT** terdiri atas empat tahap: Pemicu, Refleksi, Aksi, da
 - **Beranda (`#beranda`)**: dashboard pembelajaran berisi lanjutkan belajar, ringkasan progres, materi per minggu, tugas dan tenggat, pengumuman, pilihan cara belajar, dan pengajuan akomodasi ke ULD.
 - **Pertemuan 1 (`#langkah-1` sampai `#langkah-5`)**: satu langkah per layar, yaitu Pemicu → Materi → Refleksi → Aksi → Integrasi.
 - **Tombol bulat melayang** (kanan bawah) membuka pengaturan tampilan dan aksesibilitas. Pintasan: Alt + A.
-- **Tab samping "Lihat dalam Bahasa Isyarat"** membuka format Isyarat di halaman pertemuan.
+- **Bantu baca** (di panel tombol bulat): "Bacakan halaman ini" membacakan seluruh halaman berurutan dengan sorotan dan bilah Jeda/Berhenti; sakelar "Klik teks untuk dibacakan".
+- **Tab samping "Terjemahkan ke BISINDO"** membuka jendela juru bahasa isyarat melayang di pojok kanan (bisa diperbesar, dipindah kiri/kanan, ditutup). Teks yang dibacakan atau diklik tampil sebagai terjemahan di jendela itu.
 - Materi per pertemuan, CPMK, metode, dan bobot penilaian **mengikuti RPS Kewarganegaraan WU25-00003**.
 - **Pop-up** dipakai untuk umpan balik, definisi istilah, jurnal terkirim, cek pemahaman, bab selesai, dan formulir akomodasi. Setiap pop-up punya tombol **Dengarkan**.
 

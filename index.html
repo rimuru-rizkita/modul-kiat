@@ -342,6 +342,12 @@
 <div class="drawer right" id="panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle" hidden>
   <div class="drawer-head"><h2 id="panelTitle">Atur tampilan</h2><button class="round sm" data-close aria-label="Tutup pengaturan"><i class="ic" data-ic="tutup"></i></button></div>
   <div class="drawer-body">
+    <div class="set help-read">
+      <span class="set-title">Bantu baca</span>
+      <button class="btn btn-primary btn-lg" id="readPageBtn"><i class="ic" data-ic="suara"></i>Bacakan halaman ini</button>
+      <div class="switch-row"><div><strong id="lb-click">Klik teks untuk dibacakan</strong><small>Arahkan kursor ke teks, lalu klik untuk mendengarnya</small></div><span class="switch-state" aria-hidden="true"></span><button class="switch" role="switch" aria-checked="false" aria-labelledby="lb-click" data-pref="clickread"></button></div>
+      <div class="switch-row"><div><strong id="lb-jf">Jendela juru bahasa isyarat (BISINDO)</strong><small>Video JBI melayang di pojok kanan, mengikuti teks yang dibacakan atau diklik</small></div><span class="switch-state" aria-hidden="true"></span><button class="switch" role="switch" aria-checked="false" aria-labelledby="lb-jf" data-pref="jbifloat"></button></div>
+    </div>
     <div class="preview"><p>Semua warga negara punya hak yang sama.</p></div>
     <div class="set"><span class="set-title">Ukuran teks</span>
       <div class="size-row">
@@ -422,7 +428,23 @@
   <button class="fab fab-sm" id="toTop" aria-label="Kembali ke atas" hidden><i class="ic" data-ic="atas"></i></button>
   <button class="fab" id="openPanel" aria-haspopup="dialog" aria-controls="panel" aria-label="Atur tampilan dan aksesibilitas"><i class="ic" data-ic="aksesibilitas"></i><span class="fab-tip" aria-hidden="true">Atur tampilan</span></button>
 </div>
-<button class="sign-tab" id="signTab" hidden><span class="sign-tab-ic"><i class="ic" data-ic="isyarat"></i></span><span class="sign-tab-txt">Lihat dalam Bahasa Isyarat</span></button>
+<button class="sign-tab" id="signTab" aria-pressed="false" aria-controls="jbiFloat"><span class="sign-tab-ic"><i class="ic" data-ic="isyarat"></i></span><span class="sign-tab-txt">Terjemahkan ke BISINDO</span></button>
+<aside class="jbi-float" id="jbiFloat" aria-label="Jendela juru bahasa isyarat" hidden>
+  <div class="jf-head">
+    <i class="ic" data-ic="isyarat"></i><strong>JBI · BISINDO</strong>
+    <button class="jf-btn" id="jfSize" aria-label="Perbesar jendela"><i class="ic" data-ic="perbesar"></i></button>
+    <button class="jf-btn" id="jfSide" aria-label="Pindahkan jendela ke kiri"><i class="ic" data-ic="pindah"></i></button>
+    <button class="jf-btn" id="jfClose" aria-label="Tutup jendela juru bahasa isyarat"><i class="ic" data-ic="tutup"></i></button>
+  </div>
+  <div class="jf-screen"><img id="jfImg" src="assets/img/jbi-diam.png" data-gif="assets/img/jbi-ilustrasi.gif" data-png="assets/img/jbi-diam.png" alt="Ilustrasi juru bahasa isyarat"></div>
+  <p class="jf-cap" id="jfCap" aria-live="polite">Klik teks mana saja, atau tekan “Bacakan halaman ini”, untuk melihat terjemahannya.</p>
+  <p class="jf-note">Ilustrasi. Versi akhir memakai rekaman JBI Tuli.</p>
+</aside>
+<div class="read-bar" id="readBar" role="status" hidden>
+  <i class="ic" data-ic="suara"></i><span id="readTxt">Membacakan halaman…</span>
+  <button class="btn btn-outline" id="readPause">Jeda</button>
+  <button class="btn btn-primary" id="readStop">Berhenti</button>
+</div>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" aria-describedby="mBody" hidden>
   <div class="modal-card">
     <button class="round sm modal-say" id="mSay" aria-label="Dengarkan isi pop-up"><i class="ic" data-ic="suara"></i></button>
