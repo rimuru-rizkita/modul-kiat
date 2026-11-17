@@ -60,6 +60,7 @@ function popup(o){
   paint(m); $('#scrim').hidden=false; m.hidden=false; (m.querySelector('[data-ma]')).focus();
 }
 function closePopup(){ const m=$('#modal'); if(m.hidden) return; m.hidden=true; if(hasTTS) speechSynthesis.cancel(); if($$('.drawer').every(d=>d.hidden)) $('#scrim').hidden=true; if(mLast&&document.contains(mLast)) mLast.focus(); }
+function animate(el,cls){ if(!el) return; el.classList.remove('anim-enter','anim-next','anim-prev','anim-fade'); void el.offsetWidth; el.classList.add(cls); }
 let tT; function toast(m){ const t=$('#toast'); t.textContent=m; t.hidden=false; clearTimeout(tT); tT=setTimeout(()=>t.hidden=true,2400); }
 
 /* ---- Data ---- */
@@ -116,8 +117,9 @@ function renderStepper(){
   $('#stepHint').textContent = done.size===5 ? 'Semua langkah selesai. Hebat!' : `${done.size} dari 5 langkah selesai. Klik nomor untuk berpindah, atau tekan Lanjut di bawah.`;
 }
 function goStep(n, focus){
-  step=Math.min(5,Math.max(1,n)); stopTTS(); cur=0;
-  $$('.langkah').forEach(s=>s.hidden=+s.dataset.step!==step); seen.add(step); store.set('kiat-seen',[...seen]);
+  const prevStep=step; step=Math.min(5,Math.max(1,n)); stopTTS(); cur=0;
+  $$('.langkah').forEach(s=>s.hidden=+s.dataset.step!==step);
+  if(focus && step!==prevStep) animate($(`.langkah[data-step="${step}"]`), step>prevStep?'anim-next':'anim-prev'); seen.add(step); store.set('kiat-seen',[...seen]);
   $('#where').textContent=`Langkah ${step} dari 5`;
   $('#prevStep').hidden=step===1;
   const nx=$('#nextStep'); nx.innerHTML= step<5 ? `Lanjut: ${STEPS[step]}<i class="ic" data-ic="kanan"></i>` : `<i class="ic" data-ic="centang"></i>Selesaikan Pertemuan 1`; paint(nx);
@@ -145,6 +147,7 @@ function selectFmt(f,focus){
   $('#player').hidden=f!=='dengar';
   placeAlt();
   if(f!=='dengar') stopTTS();
+  if(focus!==undefined || selectFmt.ready) animate($(`.langkah[data-step="${step}"]`),'anim-fade'); selectFmt.ready=true;
   if(f!=='isyarat'){ clearInterval(sT); const sp=$('#sPlay'); if(sp&&sp.getAttribute('aria-pressed')==='true') sp.click(); }
 }
 tabs.forEach((t,i)=>{ t.addEventListener('click',()=>selectFmt(t.dataset.fmt));
@@ -210,8 +213,8 @@ function renderEasy(){ const L=ER(); if(ei>=L.length) ei=0;
   $('#easyPrev').disabled=ei===0; $('#easyPrev').style.visibility=ei===0?'hidden':'visible';
   const last=ei===L.length-1; $('#easyNext').innerHTML= last?'<i class="ic" data-ic="centang"></i>Selesai':'Berikutnya<i class="ic" data-ic="kanan"></i>'; paint($('#easyNext'));
 }
-$('#easyPrev').addEventListener('click',()=>{ if(ei>0){ ei--; renderEasy(); } });
-$('#easyNext').addEventListener('click',()=>{ if(ei<ER().length-1){ ei++; renderEasy(); } else understandPopup(); });
+$('#easyPrev').addEventListener('click',()=>{ if(ei>0){ ei--; renderEasy(); animate($('#easyCard'),'anim-prev'); } });
+$('#easyNext').addEventListener('click',()=>{ if(ei<ER().length-1){ ei++; renderEasy(); animate($('#easyCard'),'anim-next'); } else understandPopup(); });
 function goActivity(){ const sel=ACTIVITY[step]; if(sel){ const el=$(`.langkah[data-step="${step}"] ${sel}`)||$(sel); el.scrollIntoView({block:'center',behavior:calm()}); const f=el.matches('input,button,textarea')?el:el.querySelector('input,button,textarea'); if(f) f.focus({preventScroll:true}); } else $('#nextStep').focus(); }
 function understandPopup(){ const has=!!ACTIVITY[step];
   popup({icon:'easyread',title:'Apakah kamu paham?',html:'<p>Tidak apa-apa kalau belum. Kamu bisa mengulang pelan-pelan.</p>',actions:[
@@ -352,6 +355,7 @@ window.addEventListener('scroll',()=>{ $('#toTop').hidden = window.scrollY < 500
 function route(){
   const h=location.hash; const m=/^#langkah-([1-5])$/.exec(h);
   const bab=!!m; $('#view-beranda').hidden=bab; $('#view-bab').hidden=!bab; root.dataset.view=bab?'bab':'beranda';
+  const v=bab?'bab':'beranda'; if(route.lastView && route.lastView!==v) animate(bab?$('#view-bab'):$('#view-beranda'),'anim-enter'); route.lastView=v;
   if(bab){ if(+m[1]!==step||!route.inBab){ goStep(+m[1],route.inBab); } route.inBab=true; }
   else { route.inBab=false; stopTTS(); renderDash(); }
   window.scrollTo({top:0});

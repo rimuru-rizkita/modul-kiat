@@ -480,6 +480,38 @@ textarea:focus,input[type="text"]:focus{ border-color:var(--link); }
 :root[data-motif="off"] .hero::before, :root[data-motif="off"] .topbar::after, :root[data-motif="off"] .motif-side,
 :root[data-contrast="high"] .hero::before, :root[data-contrast="high"] .topbar::after, :root[data-contrast="high"] .motif-side,
 :root[data-motion="off"] .hero::before, :root[data-motion="off"] .topbar::after, :root[data-motion="off"] .motif-side{ display:none !important; }
+/* ---- Animasi halus (otomatis mati: Kurangi gerakan / prefers-reduced-motion) ---- */
+:root{ --ease:cubic-bezier(.2,.7,.2,1); }
+@keyframes kFadeUp{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+@keyframes kNext{ from{ opacity:0; transform:translateX(28px); } to{ opacity:1; transform:none; } }
+@keyframes kPrev{ from{ opacity:0; transform:translateX(-28px); } to{ opacity:1; transform:none; } }
+@keyframes kFade{ from{ opacity:0; } to{ opacity:1; } }
+@keyframes kPop{ from{ opacity:0; transform:scale(.96) translateY(8px); } to{ opacity:1; transform:none; } }
+@keyframes kDrawerR{ from{ transform:translateX(100%); } to{ transform:none; } }
+@keyframes kDrawerL{ from{ transform:translateX(-100%); } to{ transform:none; } }
+@keyframes kToast{ from{ opacity:0; transform:translate(-50%,12px); } to{ opacity:1; transform:translate(-50%,0); } }
+.anim-enter{ animation:kFadeUp .3s var(--ease) both; }
+.anim-next{ animation:kNext .28s var(--ease) both; }
+.anim-prev{ animation:kPrev .28s var(--ease) both; }
+.anim-fade{ animation:kFade .22s ease both; }
+.scrim:not([hidden]){ animation:kFade .2s ease both; }
+.drawer.right:not([hidden]){ animation:kDrawerR .3s var(--ease) both; }
+.drawer.left:not([hidden]){ animation:kDrawerL .3s var(--ease) both; }
+.modal:not([hidden]) .modal-card{ animation:kPop .26s var(--ease) both; }
+.toast:not([hidden]){ animation:kToast .24s var(--ease) both; }
+.jbi-float:not([hidden]){ animation:kPop .26s var(--ease) both; }
+.read-bar:not([hidden]){ animation:kFadeUp .24s var(--ease) both; }
+details.more[open] > .more-body{ animation:kFadeUp .24s var(--ease) both; }
+.hukum-body:not([hidden]), .alt-block:not([hidden]){ animation:kFadeUp .24s var(--ease) both; }
+.btn, .fmt, .fmt-pick button, .toggle-btn, .speed button, .seg span, .opt, .choice, .check, .chap, .stepper .dot,
+.switch, .fab, .round, .jf-btn, .segs button, .hukum button, details.more summary, .bab-list a, .easy-say, .sign-tab{
+  transition:background-color .18s ease, color .18s ease, border-color .18s ease, box-shadow .2s ease, transform .14s var(--ease), filter .18s ease; }
+.btn:active, .fmt:active, .toggle-btn:active, .speed button:active, .round:active, .jf-btn:active, .fmt-pick button:active, .chap:active{ transform:scale(.97); }
+.stepper button:active .dot{ transform:scale(.92); }
+.fab:hover{ transform:translateY(-3px); }
+.fab:active{ transform:scale(.95); }
+.sign-tab:hover{ transform:translate(-4px,-50%); }
+.chap:not(.locked):hover{ transform:translateY(-1px); }
 .toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:calc(env(safe-area-inset-bottom,0px) + 24px); z-index:60; background:var(--fg); color:var(--bg); padding:.75rem 1.1rem; border-radius:12px; font-weight:600; display:flex; gap:.5rem; align-items:center; max-width:calc(100% - 32px); }
 .ruler{ position:fixed; left:0; right:0; height:3.2rem; pointer-events:none; z-index:35; background:rgba(173,31,102,.10); border-top:2px solid var(--focus); border-bottom:2px solid var(--focus); transform:translateY(-50%); }
 :root[data-motion="off"] *,:root[data-motion="off"] *::before,:root[data-motion="off"] *::after{ transition:none !important; animation:none !important; scroll-behavior:auto !important; }
