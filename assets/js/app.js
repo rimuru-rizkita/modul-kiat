@@ -235,7 +235,7 @@ function setAnim(stop){ animStopped=stop; $$('.jbi-img').forEach(im=>{ im.src=st
   $$('[data-anim]').forEach(b=>{ b.setAttribute('aria-pressed',stop); b.innerHTML=stop?'<i class="ic" data-ic="putar"></i>Jalankan animasi':'<i class="ic" data-ic="jeda"></i>Hentikan animasi'; paint(b); }); }
 $$('[data-anim]').forEach(b=>b.addEventListener('click',()=>setAnim(!animStopped)));
 /* ---- Preferensi ---- */
-const DEF={size:100,font:'atkinson',spacing:'normal',theme:'auto',ruler:false,sorot:true,motion:false,jbi:true,startfmt:'teks',clickread:false,jbifloat:false};
+const DEF={size:100,font:'atkinson',spacing:'normal',theme:'auto',ruler:false,sorot:true,motion:false,jbi:true,startfmt:'teks',clickread:false,jbifloat:false,motif:true};
 let pref=Object.assign({},DEF,store.get('kiat-pref',{})); const hostTheme=root.dataset.theme||'';
 const SP={normal:[1.6,'0em','0em'],lega:[1.9,'0.04em','0.12em'],sangat:[2.2,'0.08em','0.2em']};
 function applyPref(msg){
@@ -243,7 +243,7 @@ function applyPref(msg){
   if(pref.font==='atkinson') delete root.dataset.font; else root.dataset.font=pref.font;
   delete root.dataset.contrast;
   if(pref.theme==='light'||pref.theme==='dark') root.dataset.theme=pref.theme; else if(pref.theme==='high'){ root.dataset.contrast='high'; root.dataset.theme='dark'; } else { if(hostTheme) root.dataset.theme=hostTheme; else delete root.dataset.theme; }
-  root.dataset.clickread=pref.clickread?'on':'off'; $('#jbiFloat').hidden=!pref.jbifloat; $('#signTab').setAttribute('aria-pressed',!!pref.jbifloat);
+  root.dataset.motif=pref.motif?'on':'off'; root.dataset.clickread=pref.clickread?'on':'off'; $('#jbiFloat').hidden=!pref.jbifloat; $('#signTab').setAttribute('aria-pressed',!!pref.jbifloat);
   root.dataset.sorot=pref.sorot?'on':'off'; root.dataset.motion=pref.motion?'off':'on'; setAnim(!!pref.motion || matchMedia('(prefers-reduced-motion: reduce)').matches); $('#ruler').hidden=!pref.ruler;
   $('#vJbi').hidden=!pref.jbi; $('#vJbiBtn').setAttribute('aria-pressed',pref.jbi);
   $('#size').value=pref.size; $('#sizeVal').textContent=pref.size+'%'; $('#size').setAttribute('aria-valuetext',pref.size+' persen');
@@ -351,7 +351,7 @@ window.addEventListener('scroll',()=>{ $('#toTop').hidden = window.scrollY < 500
 /* ---- Rute ---- */
 function route(){
   const h=location.hash; const m=/^#langkah-([1-5])$/.exec(h);
-  const bab=!!m; $('#view-beranda').hidden=bab; $('#view-bab').hidden=!bab;
+  const bab=!!m; $('#view-beranda').hidden=bab; $('#view-bab').hidden=!bab; root.dataset.view=bab?'bab':'beranda';
   if(bab){ if(+m[1]!==step||!route.inBab){ goStep(+m[1],route.inBab); } route.inBab=true; }
   else { route.inBab=false; stopTTS(); renderDash(); }
   window.scrollTo({top:0});
