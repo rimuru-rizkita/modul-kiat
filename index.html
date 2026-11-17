@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul KIAT Kewarganegaraan</title>
+<meta name="description" content="Modul Kewarganegaraan yang inklusif dan aksesibel bagi mahasiswa disabilitas (model KIAT) — Institut Teknologi Sumatera.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238020df'/%3E%3Ctext x='16' y='21' font-size='13' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Lexend:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#materi">Langsung ke materi</a>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#beranda" style="color:inherit;text-decoration:none" aria-label="Beranda Modul KIAT"><span class="brand-mark" aria-hidden="true">KIAT</span><span class="brand-name">Modul Kewarganegaraan</span></a>
+    <button class="btn btn-ghost" id="openBab" aria-haspopup="dialog" aria-controls="babDrawer"><i class="ic" data-ic="buku"></i>Semua pertemuan</button>
+    <button class="btn btn-outline" id="openHelp" aria-haspopup="dialog" aria-controls="help"><i class="ic" data-ic="lindung"></i>Bantuan</button>
+  </div>
+</header>
+
+<div class="page">
+<main id="materi" tabindex="-1">
+  <!-- ===== BERANDA ===== -->
+  <div class="dash" id="view-beranda">
+    <div class="hello"><h1>Halo, Raka</h1><p>Kewarganegaraan · WU25-00003 · 2 SKS · Mata Kuliah Wajib Umum</p></div>
+
+    <section class="hero" aria-labelledby="heroTitle">
+      <div>
+        <span class="kicker">Lanjutkan belajar</span>
+        <h2 id="heroTitle">Pertemuan 1 · Konsep, Tujuan, dan Fungsi Pendidikan Kewarganegaraan</h2>
+        <p id="heroStep">Langkah 1 dari 5 · Pemicu</p>
+        <div class="bar" aria-hidden="true"><span id="heroBar" style="width:0%"></span></div>
+        <small id="heroPct">0% selesai</small>
+      </div>
+      <a class="btn btn-lg" href="#langkah-1" id="heroGo">Lanjutkan<i class="ic" data-ic="kanan"></i></a>
+    </section>
+
+    <div class="stats">
+      <div class="stat"><i class="ic" data-ic="buku"></i><div><strong id="statBab">0 dari 14</strong><span>topik selesai</span></div></div>
+      <div class="stat"><i class="ic" data-ic="jurnal"></i><div><strong>3 tugas</strong><span>jurnal, presentasi, tugas kelompok</span></div></div>
+      <div class="stat"><i class="ic" data-ic="kalender"></i><div><strong>Pertemuan 2</strong><span>Pentingnya Identitas bagi Bangsa Indonesia</span></div></div>
+    </div>
+
+    <div class="dash-grid">
+      <div class="col">
+        <section class="box" aria-labelledby="babTitle2">
+          <div class="box-head"><i class="ic" data-ic="buku" style="color:var(--link)"></i><h2 id="babTitle2">Materi per pertemuan</h2></div>
+          <p class="muted" style="margin-top:-.4rem">Sesuai RPS: 16 pertemuan, 2 × 50 menit. Ketuk pertemuan untuk melihat ringkasannya.</p>
+          <ul class="chap-list" id="chapList"></ul>
+          <button class="btn btn-ghost" id="moreBab" aria-expanded="false" style="align-self:flex-start">Lihat semua 16 pertemuan<i class="ic" data-ic="bawah"></i></button>
+        </section>
+      </div>
+      <div class="col">
+        <section class="box" aria-labelledby="taskTitle">
+          <div class="box-head"><i class="ic" data-ic="jurnal" style="color:var(--link)"></i><h2 id="taskTitle">Tugas</h2></div>
+          <div class="task"><i class="ic" data-ic="jurnal"></i><div><strong>Jurnal refleksi Pertemuan 1</strong><small>Sebelum Pertemuan 2 · boleh ketik, suara, atau video isyarat</small></div></div>
+          <div class="task"><i class="ic" data-ic="orang"></i><div><strong>Presentasi analisis kasus (5W + 1H)</strong><small>Mulai Pertemuan 9 · bobot total 50%</small></div></div>
+          <div class="task"><i class="ic" data-ic="video"></i><div><strong>Tugas kelompok: video kampanye Demokrasi Pancasila</strong><small>Pertemuan 10 · bobot 10%</small></div></div>
+        </section>
+        <section class="box" aria-labelledby="gradeTitle">
+          <div class="box-head"><i class="ic" data-ic="asesmen" style="color:var(--link)"></i><h2 id="gradeTitle">Komponen nilai</h2></div>
+          <div class="grade">
+            <div class="grade-row"><span>Tes tulis (UTS)</span><b>30%</b><div class="gbar"><span style="width:30%"></span></div><small>CPMK 2-1 · Pertemuan 1–7</small></div>
+            <div class="grade-row"><span>Unjuk kerja (presentasi)</span><b>50%</b><div class="gbar"><span style="width:50%"></span></div><small>CPMK 2-2 · Pertemuan 9–15</small></div>
+            <div class="grade-row"><span>Tes lisan (tugas kelompok)</span><b>20%</b><div class="gbar"><span style="width:20%"></span></div><small>CPMK 2-2 · Pertemuan 10 dan 15</small></div>
+          </div>
+          <p class="muted">Semua penilaian bisa diambil dalam format alternatif. Ajukan lewat Akomodasi belajar.</p>
+        </section>
+        <section class="box" aria-labelledby="fmtTitle2">
+          <div class="box-head"><i class="ic" data-ic="aksesibilitas" style="color:var(--link)"></i><h2 id="fmtTitle2">Cara belajarmu</h2></div>
+          <p class="muted" style="margin-top:-.4rem">Setiap pertemuan akan dibuka dengan format ini.</p>
+          <div class="fmt-pick" role="group" aria-label="Format pembuka pertemuan">
+            <button data-start="teks" aria-pressed="false"><i class="ic" data-ic="buku"></i>Teks</button>
+            <button data-start="dengar" aria-pressed="false"><i class="ic" data-ic="dengarkan"></i>Dengarkan</button>
+            <button data-start="isyarat" aria-pressed="false"><i class="ic" data-ic="isyarat"></i>Isyarat</button>
+            <button data-start="easy" aria-pressed="false"><i class="ic" data-ic="easyread"></i>Easy Read</button>
+          </div>
+          <button class="btn btn-outline" id="openPanel2"><i class="ic" data-ic="huruf"></i>Atur ukuran, huruf, warna</button>
+        </section>
+        <section class="box soft" aria-labelledby="accTitle">
+          <div class="box-head"><i class="ic" data-ic="kampus"></i><h2 id="accTitle">Akomodasi belajar</h2></div>
+          <p style="font-size:.92rem">Butuh waktu ujian tambahan, juru bahasa isyarat, atau materi dalam format lain? Ajukan ke ULD Itera.</p>
+          <button class="btn btn-primary" id="openAcc">Ajukan akomodasi</button>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PERTEMUAN 1 ===== -->
+  <div class="view-bab" id="view-bab" hidden>
+  <a class="back" href="#beranda"><i class="ic" data-ic="kiri"></i>Beranda</a>
+  <div class="head">
+    <p class="eyebrow">Pertemuan 1 dari 16 · 2 × 50 menit · CPMK 2-1 · Contextual Learning</p>
+    <h1>Konsep, Tujuan, dan Fungsi Pendidikan Kewarganegaraan</h1>
+  </div>
+
+  <nav class="stepper" aria-labelledby="stepTitle">
+    <div class="stepper-head">
+      <h2 id="stepTitle">Alur belajar pertemuan ini</h2>
+      <p id="stepHint">5 langkah singkat. Kerjakan berurutan, atau klik nomor untuk berpindah.</p>
+    </div>
+    <ol id="stepper"></ol>
+  </nav>
+
+  <div class="formats" role="tablist" aria-label="Cara belajar">
+    <button class="fmt" role="tab" id="tab-teks" aria-selected="true" aria-controls="panel-artikel" data-fmt="teks"><i class="ic" data-ic="buku"></i>Teks</button>
+    <button class="fmt" role="tab" id="tab-dengar" aria-selected="false" aria-controls="panel-artikel" data-fmt="dengar" tabindex="-1"><i class="ic" data-ic="dengarkan"></i>Dengarkan</button>
+    <button class="fmt" role="tab" id="tab-isyarat" aria-selected="false" aria-controls="panel-artikel" data-fmt="isyarat" tabindex="-1"><i class="ic" data-ic="isyarat"></i>Isyarat</button>
+    <button class="fmt" role="tab" id="tab-easy" aria-selected="false" aria-controls="panel-artikel" data-fmt="easy" tabindex="-1"><i class="ic" data-ic="easyread"></i>Easy Read</button>
+  </div>
+
+  <!-- ===== TEKS / DENGARKAN ===== -->
+  <div role="tabpanel" id="panel-artikel" aria-labelledby="tab-teks" style="display:flex;flex-direction:column;gap:1.75rem">
+    <div class="player" id="player" hidden>
+      <button class="round" id="ttsPlay" aria-label="Putar narasi"><i class="ic" data-ic="putar"></i></button>
+      <div class="player-info"><strong>Dengarkan langkah ini</strong><span id="ttsStatus" aria-live="polite">Kalimat yang dibacakan akan disorot.</span></div>
+      <button class="round sm" id="ttsPrev" aria-label="Bagian sebelumnya"><i class="ic" data-ic="kiri"></i></button>
+      <button class="round sm" id="ttsNext" aria-label="Bagian berikutnya"><i class="ic" data-ic="kanan"></i></button>
+      <div class="speed" role="group" aria-label="Kecepatan suara">
+        <button data-rate="0.75" aria-pressed="false">0,75×</button><button data-rate="1" aria-pressed="true">1×</button><button data-rate="1.25" aria-pressed="false">1,25×</button>
+      </div>
+    </div>
+
+    <!-- LANGKAH 1 -->
+    <section class="langkah" data-step="1" aria-labelledby="h1s">
+      <div class="langkah-head"><div class="meta"><span class="tag">Pemicu</span>± 15 menit</div><h2 id="h1s" data-read>Kisah Dimas</h2></div>
+      <details class="more"><summary><i class="ic" data-ic="tujuan" style="color:var(--link)"></i>Apa yang akan kamu pelajari?<i class="ic chev" data-ic="kanan"></i></summary>
+        <div class="more-body"><ul class="goal-list">
+          <li><i class="ic" data-ic="centang"></i>Memahami konsep, tujuan, dan fungsi Pendidikan Kewarganegaraan.</li>
+          <li><i class="ic" data-ic="centang"></i>Menjelaskan sumber historis, sosiologis, dan politis PKn di Indonesia.</li>
+          <li><i class="ic" data-ic="centang"></i>Menunjukkan sikap positif terhadap PKn untuk memperkuat jati diri keindonesiaan.</li></ul>
+          <p class="muted">Sub-CPMK Pertemuan 1 · CPMK 2-1 · Sumber: <em>Pendidikan Kewarganegaraan untuk Perguruan Tinggi</em> (Tim Dikti, 2016)</p></div></details>
+      <details class="more"><summary><i class="ic" data-ic="asesmen" style="color:var(--link)"></i>Kontrak kuliah<i class="ic chev" data-ic="kanan"></i></summary>
+        <div class="more-body">
+          <ul class="info-list">
+            <li><span>Bobot</span><span>2 SKS · 2 × 50 menit per pertemuan</span></li>
+            <li><span>Metode</span><span>Contextual Learning (P1–7), Case Based Learning (P9–15)</span></li>
+            <li><span>Penilaian</span><span>UTS 30% · Presentasi 50% · Tugas kelompok 20%</span></li>
+            <li><span>Ujian</span><span>UTS di Pertemuan 8, UAS di Pertemuan 16. Format alternatif tersedia.</span></li>
+          </ul>
+          <label class="check" style="margin-top:.4rem"><input type="checkbox" id="kontrak"><span>Saya sudah membaca RPS dan menyetujui kontrak kuliah.</span></label>
+        </div></details>
+      <div class="video">
+        <div class="screen">
+          <img class="scene-img" id="vScene" src="assets/img/pemicu-diam.png" data-gif="assets/img/pemicu-dimas.gif" data-png="assets/img/pemicu-diam.png" alt="Ilustrasi kisah Dimas: Dimas membuka salindia di laptop, tetapi pembaca layarnya diam. Ternyata file itu hasil pindaian yang hanya berisi gambar. Temannya menawarkan diri membacakan, dan Dimas menjawab ingin belajar mandiri. Penutup: kebaikan teman, atau hak Dimas?">
+          <button class="play" id="vPlay" aria-label="Putar video"><i class="ic" data-ic="putar"></i></button>
+          <div class="jbi" id="vJbi"><img class="jbi-img" src="assets/img/jbi-ilustrasi.gif" data-gif="assets/img/jbi-ilustrasi.gif" data-png="assets/img/jbi-diam.png" alt="Ilustrasi juru bahasa isyarat (penanda tempat video JBI)"></div>
+          <div class="cap" id="vCap">Saya membuka salindia kuliah, tetapi pembaca layar saya diam saja.</div>
+          <div class="vbar" aria-hidden="true"><span id="vBar"></span></div>
+        </div>
+        <div class="vctl">
+          <button class="toggle-btn" aria-pressed="true" id="vCC"><i class="ic" data-ic="cc"></i>Teks</button>
+          <button class="toggle-btn" aria-pressed="true" id="vJbiBtn"><i class="ic" data-ic="isyarat"></i>JBI</button>
+          <button class="toggle-btn" aria-pressed="false" id="vTrBtn" aria-controls="vTr"><i class="ic" data-ic="transkrip"></i>Transkrip</button>
+          <button class="toggle-btn" data-anim aria-pressed="false"><i class="ic" data-ic="jeda"></i>Hentikan animasi</button>
+        </div>
+        <div class="transcript" id="vTr" hidden>
+          <p>[Dimas] Saya membuka salindia kuliah, tetapi pembaca layar saya diam saja.</p>
+          <p>[Dimas] Ternyata file-nya hasil pindaian. Isinya hanya gambar.</p>
+          <p>[Dimas] Teman saya menawarkan diri membacakan. Saya berterima kasih, tetapi saya ingin belajar mandiri.</p>
+          <p>[Narator] Apakah ini soal kebaikan teman, atau soal hak Dimas?</p>
+        </div>
+      </div>
+      <p data-read>Dimas adalah mahasiswa low vision. Dosen membagikan salindia PDF hasil pindaian. Pembaca layar Dimas tidak bisa membacanya sama sekali.</p>
+      <div class="poll">
+        <fieldset>
+          <legend>Menurutmu, apa yang seharusnya terjadi?</legend>
+          <label class="opt"><input type="radio" name="poll" value="a" id="poll-a"><span>Teman atau dosen membantu Dimas karena kasihan.</span></label>
+          <label class="opt"><input type="radio" name="poll" value="b" id="poll-b"><span>Kampus menyediakan materi yang bisa diakses, karena itu hak Dimas.</span></label>
+          <label class="opt"><input type="radio" name="poll" value="c" id="poll-c"><span>Saya belum yakin.</span></label>
+        </fieldset>
+        <p class="muted"><i class="ic" data-ic="lensa"></i>Tidak ada jawaban salah, dan pilihanmu tidak dinilai.</p>
+      </div>
+    </section>
+
+    <!-- LANGKAH 2 -->
+    <section class="langkah" data-step="2" aria-labelledby="h2s" hidden>
+      <div class="langkah-head"><div class="meta"><span class="tag">Materi</span>± 35 menit</div><h2 id="h2s" data-read>Apa itu Pendidikan Kewarganegaraan?</h2></div>
+      <div class="prose">
+        <p data-read>Pendidikan Kewarganegaraan (PKn) membantu mahasiswa menjadi warga negara yang memahami hak dan kewajibannya, cinta tanah air, dan punya tanggung jawab sosial.</p>
+        <p data-read>Tujuannya adalah membentuk warga negara yang baik dan berjiwa Pancasila: religius, humanis, nasionalis, demokratis, dan berkeadilan.</p>
+        <h3 data-read>Mengapa PKn diperlukan?</h3>
+        <p data-read>Pembukaan UUD 1945 menyebut salah satu tujuan negara: mencerdaskan kehidupan bangsa. PKn ikut mewujudkannya dengan menyiapkan warga yang sadar hak, kewajiban, dan perannya di masyarakat.</p>
+        <h3 data-read>Tiga sumber PKn</h3>
+      </div>
+      <div class="src-grid">
+        <div class="src"><i class="ic" data-ic="buku"></i><strong data-read>Historis</strong><p data-read>Semangat kebangsaan lahir dari perjuangan melawan penjajahan. Sejak awal kemerdekaan, pendidikan tentang warga negara diajarkan agar nilai perjuangan itu terus hidup.</p></div>
+        <div class="src"><i class="ic" data-ic="orang"></i><strong data-read>Sosiologis</strong><p data-read>Indonesia adalah masyarakat majemuk: suku, agama, bahasa, dan kemampuan yang beragam. PKn membantu kita hidup bersama secara adil.</p></div>
+        <div class="src"><i class="ic" data-ic="hukum"></i><strong data-read>Politis</strong><p data-read>Negara mewajibkan PKn lewat UU No. 20 Tahun 2003 tentang Sisdiknas dan UU No. 12 Tahun 2012 tentang Pendidikan Tinggi.</p></div>
+      </div>
+      <div class="prose">
+        <h3 data-read>Dinamika dan tantangan PKn saat ini</h3>
+        <p data-read>Nilai kewarganegaraan selalu diuji oleh perubahan zaman. Beberapa tantangan yang kita hadapi sekarang:</p>
+      </div>
+      <ul class="goal-list challenge">
+        <li><i class="ic" data-ic="kanan"></i><span data-read>Banjir informasi dan hoaks di media sosial.</span></li>
+        <li><i class="ic" data-ic="kanan"></i><span data-read>Intoleransi dan menguatnya perpecahan.</span></li>
+        <li><i class="ic" data-ic="kanan"></i><span data-read>Diskriminasi terhadap kelompok rentan, termasuk penyandang disabilitas.</span></li>
+        <li><i class="ic" data-ic="kanan"></i><span data-read>Rendahnya partisipasi warga dalam urusan publik.</span></li>
+      </ul>
+
+      <section class="lensa-section" aria-labelledby="lensaH">
+        <span class="lensa-title"><i class="ic" data-ic="lensa"></i>Lensa Hak Disabilitas</span>
+        <h3 id="lensaH" data-read>Kembali ke kisah Dimas</h3>
+        <p data-read>Kasus Dimas adalah contoh nyata tantangan diskriminasi tadi. Dimas adalah warga negara yang setara, dan hambatannya ada pada materi yang tidak bisa diakses, bukan pada dirinya.</p>
+        <p data-read>Karena itu, menyediakan materi yang aksesibel bukan soal kebaikan hati. Itu bagian dari <button class="term" aria-haspopup="dialog" id="termBtn">akomodasi yang layak</button> yang wajib dipenuhi kampus.</p>
+        <details class="more"><summary><i class="ic" data-ic="transkrip" style="color:var(--link)"></i>Bandingkan dua cara pandang<i class="ic chev" data-ic="kanan"></i></summary>
+          <div class="more-body"><div class="compare-wrap" tabindex="0" role="region" aria-label="Tabel perbandingan cara pandang">
+            <table class="compare"><thead><tr><th scope="col">Aspek</th><th scope="col">Cara pandang kasihan</th><th scope="col">Cara pandang hak</th></tr></thead>
+            <tbody><tr><th scope="row">Sudut pandang</th><td>Kekurangan ada pada orangnya</td><td>Hambatan ada pada lingkungan</td></tr>
+            <tr><th scope="row">Sikap</th><td>Iba, membantu tanpa bertanya</td><td>Bertanya dulu, menghormati pilihan</td></tr>
+            <tr><th scope="row">Dasar</th><td>Kebaikan hati</td><td>Kewajiban hukum dan etis</td></tr></tbody></table></div></div></details>
+      </section>
+      <div class="hukum-list">
+        <h3>Dasar hukum</h3>
+        <div class="hukum"><button aria-expanded="false" aria-controls="hk1"><i class="ic" data-ic="hukum"></i><span>Pembukaan UUD NRI 1945, alinea IV</span><i class="ic chev" data-ic="kanan"></i></button>
+          <div class="hukum-body" id="hk1" hidden><blockquote>“… melindungi segenap bangsa Indonesia dan seluruh tumpah darah Indonesia dan untuk memajukan kesejahteraan umum, mencerdaskan kehidupan bangsa, dan ikut melaksanakan ketertiban dunia …”</blockquote></div></div>
+        <div class="hukum"><button aria-expanded="false" aria-controls="hk2"><i class="ic" data-ic="hukum"></i><span>UU No. 12 Tahun 2012, Pasal 35 ayat (3)</span><i class="ic chev" data-ic="kanan"></i></button>
+          <div class="hukum-body" id="hk2" hidden><blockquote>“Kurikulum Pendidikan Tinggi … wajib memuat mata kuliah: a. agama; b. Pancasila; c. kewarganegaraan; dan d. bahasa Indonesia.”</blockquote></div></div>
+        <div class="hukum"><button aria-expanded="false" aria-controls="hk3"><i class="ic" data-ic="hukum"></i><span>UUD NRI 1945, Pasal 31 ayat (1)</span><i class="ic chev" data-ic="kanan"></i></button>
+          <div class="hukum-body" id="hk3" hidden><blockquote>“Setiap warga negara berhak mendapat pendidikan.”</blockquote></div></div>
+        <div class="hukum"><button aria-expanded="false" aria-controls="hk4"><i class="ic" data-ic="hukum"></i><span>UU No. 8 Tahun 2016, Pasal 10</span><i class="ic chev" data-ic="kanan"></i></button>
+          <div class="hukum-body" id="hk4" hidden><p>Hak pendidikan penyandang disabilitas meliputi pendidikan yang bermutu secara inklusif dan khusus, serta akomodasi yang layak. <em>(ringkasan, cek naskah resmi)</em></p></div></div>
+      </div>
+    </section>
+
+    <!-- LANGKAH 3 -->
+    <section class="langkah" data-step="3" aria-labelledby="h3s" hidden>
+      <div class="langkah-head"><div class="meta"><span class="tag">Refleksi</span>± 20 menit</div><h2 id="h3s" data-read>Jurnal pribadimu</h2></div>
+      <p class="intro" data-read>Jawab satu atau semua pertanyaan ini. Tidak ada jawaban benar atau salah.</p>
+      <ol class="questions">
+        <li data-read>Menurutmu, mengapa PKn tetap penting untuk masa depan Indonesia?</li>
+        <li data-read>Tantangan apa yang paling terasa di sekitarmu: hoaks, intoleransi, atau diskriminasi?</li>
+        <li data-read>Apa yang berubah dalam pandanganmu setelah mendengar kisah Dimas?</li>
+      </ol>
+      <fieldset class="set"><legend>Cara menjawab</legend>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="jmode" value="ketik" id="jm-ketik" checked><i class="ic" data-ic="ketik"></i>Ketik</label>
+          <label class="choice"><input type="radio" name="jmode" value="suara" id="jm-suara"><i class="ic" data-ic="mik"></i>Rekaman suara</label>
+          <label class="choice"><input type="radio" name="jmode" value="video" id="jm-video"><i class="ic" data-ic="video"></i>Video isyarat</label>
+        </div>
+      </fieldset>
+      <div class="field" id="jText">
+        <label for="jurnal">Tulisanmu</label>
+        <textarea id="jurnal" aria-describedby="jurnalMeta" placeholder="Awalnya saya berpikir… Sekarang saya sadar…"></textarea>
+        <div class="field-meta" id="jurnalMeta"><span id="jCount">0 kata</span><span id="jSaved" aria-live="polite">Tersimpan otomatis</span></div>
+      </div>
+      <div class="drop" id="jFile" hidden>
+        <label for="jUpload" style="font-weight:700" id="jUploadLabel">Unggah rekaman suara</label>
+        <input type="file" id="jUpload" accept="audio/*">
+        <span class="muted">Maksimal 5 menit.</span>
+      </div>
+      <p class="muted"><i class="ic" data-ic="lindung"></i>Kamu tidak wajib menceritakan diagnosis atau pengalaman pribadi. Jurnal hanya dibaca dosen.</p>
+      <div><button class="btn btn-primary" id="jSubmit"><i class="ic" data-ic="centang"></i>Kirim jurnal</button></div>
+    </section>
+
+    <!-- LANGKAH 4 -->
+    <section class="langkah" data-step="4" aria-labelledby="h4s" hidden>
+      <div class="langkah-head"><div class="meta"><span class="tag">Aksi</span>± 25 menit · berkelompok</div><h2 id="h4s" data-read>Periksa satu materi kuliah</h2></div>
+      <p class="intro" data-read>PKn mengajak kita berperan nyata, dimulai dari hal yang dekat. Pilih satu file materi dari mata kuliah lain, lalu centang yang sudah terpenuhi.</p>
+      <p aria-live="polite"><span class="count" id="auditCount">0 dari 5</span> terpenuhi</p>
+      <ul class="check-list" id="audit">
+        <li><label class="check"><input type="checkbox" id="a1"><span>Teksnya bisa dipilih, bukan gambar hasil pindaian.</span></label></li>
+        <li><label class="check"><input type="checkbox" id="a2"><span>Setiap gambar punya penjelasan teks.</span></label></li>
+        <li><label class="check"><input type="checkbox" id="a3"><span>Judul dan subjudul jelas.</span></label></li>
+        <li><label class="check"><input type="checkbox" id="a4"><span>Warna teks kontras dengan latar.</span></label></li>
+        <li><label class="check"><input type="checkbox" id="a5"><span>Video punya teks tertutup atau transkrip.</span></label></li>
+      </ul>
+      <p class="muted"><i class="ic" data-ic="aksi"></i>Rekomendasi perbaikan dari kelompokmu akan diteruskan ke Unit Layanan Disabilitas Itera.</p>
+    </section>
+
+    <!-- LANGKAH 5 -->
+    <section class="langkah" data-step="5" aria-labelledby="h5s" hidden>
+      <div class="langkah-head"><div class="meta"><span class="tag">Integrasi</span>± 10 menit</div><h2 id="h5s" data-read>Ringkasan dan rencanaku</h2></div>
+      <div class="easy-stack" id="easySummary"></div>
+      <p class="muted"><i class="ic" data-ic="asesmen"></i>Materi pertemuan ini diujikan pada Tes Tulis (UTS), CPMK 2-1, bobot 2%.</p>
+      <div class="field">
+        <label for="plan">Satu hal yang akan saya lakukan minggu ini</label>
+        <input type="text" id="plan" placeholder="Tulis sendiri, atau pilih contoh di bawah">
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap" role="group" aria-label="Contoh rencana">
+          <button class="toggle-btn" data-plan="Bertanya dulu sebelum menawarkan bantuan.">Bertanya dulu sebelum membantu</button>
+          <button class="toggle-btn" data-plan="Membagikan materi kelompok yang bisa dibaca pembaca layar.">Bagikan materi yang aksesibel</button>
+        </div>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="Pindah langkah">
+      <button class="btn btn-outline" id="prevStep"><i class="ic" data-ic="kiri"></i>Sebelumnya</button>
+      <span class="where" id="where" aria-live="polite">Langkah 1 dari 5</span>
+      <button class="btn btn-primary btn-lg" id="nextStep">Lanjut<i class="ic" data-ic="kanan"></i></button>
+    </nav>
+  </div>
+
+  <!-- ===== ISYARAT ===== -->
+  <div class="alt-block" id="panel-isyarat" hidden>
+    <div class="sign-screen" role="img" aria-label="Video bahasa isyarat Pertemuan 1">
+      <span class="sign-badge" id="sBadge">Bagian 1 dari 5</span>
+      <img class="jbi-img sign-img" src="assets/img/jbi-ilustrasi.gif" data-gif="assets/img/jbi-ilustrasi.gif" data-png="assets/img/jbi-diam.png" alt="Ilustrasi juru bahasa isyarat. Video asli diperagakan penutur Tuli.">
+      <div class="cap" id="sCap"></div>
+      <div class="vbar" aria-hidden="true"><span id="sBar"></span></div>
+    </div>
+    <div class="vctl" style="padding:0">
+      <button class="toggle-btn" id="sPlay" aria-pressed="false"><i class="ic" data-ic="putar"></i>Putar</button>
+      <button class="toggle-btn" id="sSlow" aria-pressed="false"><i class="ic" data-ic="waktu"></i>Lambat</button>
+      <button class="toggle-btn" id="sCC" aria-pressed="true"><i class="ic" data-ic="cc"></i>Teks</button>
+      <button class="toggle-btn" data-anim aria-pressed="false"><i class="ic" data-ic="jeda"></i>Hentikan animasi</button>
+    </div>
+    <ul class="segs" id="segs" aria-label="Bagian video langkah ini"></ul>
+    <p class="alt-note"><i class="ic" data-ic="lensa"></i>Kegiatan langkah ini ada di bawah. Tekan Lanjut setelah selesai.</p>
+  </div>
+
+  <!-- ===== EASY READ ===== -->
+  <div class="alt-block" id="panel-easy" hidden>
+    <div class="card-one" id="easyCard" aria-live="polite">
+      <span class="big-pic"><i class="ic" data-ic="orang" id="easyIcon"></i></span>
+      <p id="easyText"></p>
+      <button class="btn btn-outline" id="easySay"><i class="ic" data-ic="suara"></i>Dengarkan</button>
+    </div>
+    <div class="easy-nav">
+      <button class="btn btn-outline" id="easyPrev"><i class="ic" data-ic="kiri"></i>Sebelumnya</button>
+      <div class="dots" id="easyDots" aria-hidden="true"></div>
+      <span class="sr" id="easyPos"></span>
+      <button class="btn btn-primary btn-lg" id="easyNext">Berikutnya<i class="ic" data-ic="kanan"></i></button>
+    </div>
+  </div>
+  </div>
+</main>
+</div>
+
+<!-- Laci: semua bab -->
+<div class="scrim" id="scrim" hidden></div>
+<div class="drawer left" id="babDrawer" role="dialog" aria-modal="true" aria-labelledby="babTitle" hidden>
+  <div class="drawer-head"><h2 id="babTitle">Semua pertemuan</h2><button class="round sm" data-close aria-label="Tutup"><i class="ic" data-ic="tutup"></i></button></div>
+  <div class="drawer-body"><ul class="bab-list" id="babList"></ul></div>
+</div>
+
+<!-- Laci: pengaturan -->
+<div class="drawer right" id="panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle" hidden>
+  <div class="drawer-head"><h2 id="panelTitle">Atur tampilan</h2><button class="round sm" data-close aria-label="Tutup pengaturan"><i class="ic" data-ic="tutup"></i></button></div>
+  <div class="drawer-body">
+    <div class="preview"><p>Semua warga negara punya hak yang sama.</p></div>
+    <div class="set"><span class="set-title">Ukuran teks</span>
+      <div class="size-row">
+        <button class="round sm" id="sizeDown" aria-label="Perkecil teks">A−</button>
+        <label for="size" class="sr">Ukuran teks</label>
+        <input type="range" id="size" min="100" max="200" step="10" value="100">
+        <button class="round sm" id="sizeUp" aria-label="Perbesar teks">A+</button>
+        <span class="size-val" id="sizeVal">100%</span>
+      </div>
+    </div>
+    <fieldset class="set"><legend>Jenis huruf</legend>
+      <div class="seg-group">
+        <label class="seg"><input type="radio" name="font" value="atkinson" id="f-atk" checked><span style="font-family:'Atkinson Hyperlegible Next',sans-serif">Atkinson</span></label>
+        <label class="seg"><input type="radio" name="font" value="lexend" id="f-lex"><span style="font-family:Lexend,sans-serif">Lexend</span></label>
+        <label class="seg"><input type="radio" name="font" value="sistem" id="f-sys"><span style="font-family:system-ui,sans-serif">Sistem</span></label>
+        <label class="seg"><input type="radio" name="font" value="dyslexic" id="f-dys"><span style="font-family:OpenDyslexic,sans-serif">OpenDyslexic</span></label>
+      </div>
+    </fieldset>
+    <fieldset class="set"><legend>Jarak teks</legend>
+      <div class="seg-group">
+        <label class="seg"><input type="radio" name="spacing" value="normal" id="sp-n" checked><span>Normal</span></label>
+        <label class="seg"><input type="radio" name="spacing" value="lega" id="sp-l"><span>Lega</span></label>
+        <label class="seg"><input type="radio" name="spacing" value="sangat" id="sp-s"><span>Sangat lega</span></label>
+      </div>
+    </fieldset>
+    <fieldset class="set"><legend>Warna</legend>
+      <div class="seg-group">
+        <label class="seg"><input type="radio" name="theme" value="auto" id="t-auto" checked><span>Otomatis</span></label>
+        <label class="seg"><input type="radio" name="theme" value="light" id="t-light"><span><i class="swatch" style="background:#f9f4fe"></i>Terang</span></label>
+        <label class="seg"><input type="radio" name="theme" value="dark" id="t-dark"><span><i class="swatch" style="background:#17191c"></i>Gelap</span></label>
+        <label class="seg"><input type="radio" name="theme" value="high" id="t-high"><span><i class="swatch" style="background:#000;box-shadow:inset 0 0 0 4px #80df20"></i>Kontras tinggi</span></label>
+      </div>
+    </fieldset>
+    <details class="more"><summary>Pengaturan lainnya<i class="ic chev" data-ic="kanan"></i></summary>
+      <div class="more-body">
+        <div class="switch-row"><div><strong id="lb-ruler">Penggaris baca</strong><small>Garis bantu mengikuti kursor</small></div><span class="switch-state" aria-hidden="true"></span><button class="switch" role="switch" aria-checked="false" aria-labelledby="lb-ruler" data-pref="ruler"></button></div>
+        <div class="switch-row"><div><strong id="lb-sorot">Sorot teks yang dibacakan</strong></div><span class="switch-state" aria-hidden="true"></span><button class="switch" role="switch" aria-checked="true" aria-labelledby="lb-sorot" data-pref="sorot"></button></div>
+        <div class="switch-row"><div><strong id="lb-motion">Kurangi gerakan</strong></div><span class="switch-state" aria-hidden="true"></span><button class="switch" role="switch" aria-checked="false" aria-labelledby="lb-motion" data-pref="motion"></button></div>
+        <div class="switch-row"><div><strong id="lb-jbi">Juru bahasa isyarat di video</strong></div><span class="switch-state" aria-hidden="true"></span><button class="switch" role="switch" aria-checked="true" aria-labelledby="lb-jbi" data-pref="jbi"></button></div>
+        <fieldset class="set" style="margin-top:.5rem"><legend>Buka bab dengan format</legend>
+          <div class="seg-group">
+            <label class="seg"><input type="radio" name="startfmt" value="teks" id="sf-t" checked><span>Teks</span></label>
+            <label class="seg"><input type="radio" name="startfmt" value="dengar" id="sf-d"><span>Dengarkan</span></label>
+            <label class="seg"><input type="radio" name="startfmt" value="isyarat" id="sf-i"><span>Isyarat</span></label>
+            <label class="seg"><input type="radio" name="startfmt" value="easy" id="sf-e"><span>Easy Read</span></label>
+          </div>
+        </fieldset>
+        <button class="btn btn-outline" id="voiceTest" style="align-self:flex-start;margin-top:.5rem"><i class="ic" data-ic="suara"></i>Coba suara</button>
+        <p class="muted" id="voiceInfo" style="font-size:.78rem"></p>
+      </div>
+    </details>
+  </div>
+  <div class="drawer-foot">
+    <button class="btn btn-primary" data-close><i class="ic" data-ic="centang"></i>Selesai</button>
+    <button class="btn btn-ghost" id="resetPrefs">Kembalikan ke awal</button>
+  </div>
+</div>
+
+<!-- Laci: bantuan -->
+<div class="drawer right" id="help" role="dialog" aria-modal="true" aria-labelledby="helpTitle" hidden>
+  <div class="drawer-head"><h2 id="helpTitle">Bantuan &amp; lapor</h2><button class="round sm" data-close aria-label="Tutup bantuan"><i class="ic" data-ic="tutup"></i></button></div>
+  <div class="drawer-body">
+    <p>Kamu tidak sendirian. Semua laporan dijaga kerahasiaannya.</p>
+    <div class="contact"><strong>Unit Layanan Disabilitas (ULD) Itera</strong><span class="muted">Akomodasi belajar, materi aksesibel, juru bahasa isyarat.</span><span style="font-size:.85rem">Kontak resmi ULD dicantumkan di sini.</span></div>
+    <div class="contact"><strong>Satgas PPKPT Itera</strong><span class="muted">Kekerasan dan diskriminasi di kampus.</span><span style="font-size:.85rem">Kanal pelaporan resmi Satgas dicantumkan di sini.</span></div>
+    <div class="set"><span class="set-title">Cara melapor</span>
+      <ol class="report-steps">
+        <li><span>Ceritakan lewat tulisan, suara, atau video isyarat.</span></li>
+        <li><span>Petugas menghubungimu dalam 1×24 jam.</span></li>
+        <li><span>Kamu didampingi sampai selesai.</span></li>
+      </ol>
+    </div>
+  </div>
+  <div class="drawer-foot"><button class="btn btn-primary" data-close>Tutup</button></div>
+</div>
+
+<div class="fab-stack">
+  <button class="fab fab-sm" id="toTop" aria-label="Kembali ke atas" hidden><i class="ic" data-ic="atas"></i></button>
+  <button class="fab" id="openPanel" aria-haspopup="dialog" aria-controls="panel" aria-label="Atur tampilan dan aksesibilitas"><i class="ic" data-ic="aksesibilitas"></i><span class="fab-tip" aria-hidden="true">Atur tampilan</span></button>
+</div>
+<button class="sign-tab" id="signTab" hidden><span class="sign-tab-ic"><i class="ic" data-ic="isyarat"></i></span><span class="sign-tab-txt">Lihat dalam Bahasa Isyarat</span></button>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" aria-describedby="mBody" hidden>
+  <div class="modal-card">
+    <button class="round sm modal-say" id="mSay" aria-label="Dengarkan isi pop-up"><i class="ic" data-ic="suara"></i></button>
+    <span class="modal-icon" id="mIcon"></span>
+    <h2 id="mTitle"></h2>
+    <div class="modal-body" id="mBody"></div>
+    <div class="modal-actions" id="mActions"></div>
+  </div>
+</div>
+<div class="ruler" id="ruler" hidden></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
