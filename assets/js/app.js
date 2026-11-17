@@ -325,7 +325,7 @@ const visibleEl=e=>e.offsetParent!==null && !e.closest('[hidden]');
 function markClick(el){ $$('.reading-click').forEach(x=>x.classList.remove('reading-click')); if(el) el.classList.add('reading-click'); }
 document.addEventListener('click',e=>{
   if(!(pref.clickread||pref.jbifloat)) return;
-  if(e.target.closest('.drawer,.fab-stack,.jbi-float,.read-bar,.sign-tab,input,textarea,select,.formats,.stepper,.pager,.topbar')) return;
+  if(e.target.closest('.drawer,.fab-stack,.jbi-float,.read-bar,.sign-tab,input,textarea,select,.formats,.stepper ol,.segs,.pager,.topbar')) return;
   const el=e.target.closest(READ_SEL); if(!el) return;
   const txt=el.innerText.trim(); if(!txt) return;
   markClick(el);
@@ -334,7 +334,7 @@ document.addEventListener('click',e=>{
 },true);
 
 const pr={on:false,paused:false,list:[],i:0};
-function pageList(){ const all=$$(READ_SEL).filter(e=>visibleEl(e)&&e.innerText.trim()&&!e.closest('.drawer,.modal')); return all.filter(e=>!all.some(o=>o!==e&&o.contains(e))); }
+function pageList(){ const all=$$(READ_SEL).filter(e=>visibleEl(e)&&e.innerText.trim()&&!e.closest('.drawer,.modal,.stepper ol,.segs,.formats,.pager')); return all.filter(e=>!all.some(o=>o!==e&&o.contains(e))); }
 function prSpeak(){ if(!pr.on) return; if(pr.i>=pr.list.length){ prStop(); toast('Selesai dibacakan'); return; }
   const el=pr.list[pr.i], txt=el.innerText.trim(); markClick(el); el.scrollIntoView({block:'center',behavior:calm()});
   $('#readTxt').textContent=`Membacakan ${pr.i+1} dari ${pr.list.length}`; jbiShow(txt);
